@@ -1,0 +1,35 @@
+name: Basics
+version: ${project.version}
+main: gq.skyenet.basics.basics.Basics
+api-version: 1.13
+prefix: Basics
+load: STARTUP
+authors: [PretzelCA]
+description: Lightweight basic commands for Bukkit and Bukkit compatible servers.
+website: http://skyenet.gq
+commands:
+  spawn:
+    description: Teleports you to spawn.
+    usage: /<command>
+    permission: basics.spawn
+    permission-message: You don't have the required permissions to use this command.
+  setspawn:
+    description: Sets the spawn location.
+    usage: /<command>
+    permission: basics.setspawn
+    permission-message: You don't have the required permissions to use this command.
+  ping:
+    description: Ping!
+    usage: /<command>
+    permission: basics.ping
+    permission-message: You don't have the required permissions to use this command.
+  tickrate:
+    description: Shows the tickrate of the server.
+    usage: /<command>
+    permission: basics.tickrate
+    permission-message: You don't have the required permissions to use this command.
+  basics:
+    description: Plugin infomation.
+    usage: /<command>
+    permission: basics.basics
+    permission-message: You don't have the required permissions to use this command.
