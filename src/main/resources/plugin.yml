@@ -33,3 +33,18 @@ commands:
     usage: /<command>
     permission: basics.basics
     permission-message: You don't have the required permissions to use this command.
+  basicsreload:
+    description: Reloads the plugin's settings.
+    usage: /<command>
+    permission: basics.admin.reload
+    permission-message: You don't have the required permissions to use this command.
+permissions:
+  basics.*:
+    description: Give access to all Basics commands.
+    children:
+      basics.basics: true
+      basics.tickrate: true
+      basics.ping: true
+      basics.setspawn: true
+      basics.spawn: true
+      basics.admin.reload: true
