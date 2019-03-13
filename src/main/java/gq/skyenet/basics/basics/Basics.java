@@ -7,12 +7,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import org.json.simple.JSONObject;
+import java.io.IOException;
 
 public final class Basics extends JavaPlugin {
+
     double currentVersion = 0.1;
+
+    private String pluginFolder = getDataFolder().getAbsolutePath();
+    private JSONObject pluginSettings = new JSONObject();
+
     @Override
     public void onEnable() {
         // Plugin startup logic
+        pluginFolderVert(pluginFolder);
         getLogger().info("Loaded version " + currentVersion);
     }
 
@@ -40,5 +50,27 @@ public final class Basics extends JavaPlugin {
             return true;
         }
         return true;
+    }
+
+    public void pluginFolderVert(String pluginFolder) {
+        // So like, this probably isn't the best way to do it but I'm quite bad at Java so this is how I do stuff like this
+        if (Files.isDirectory(Paths.get(pluginFolder))) {
+            if (!Files.exists(Paths.get(pluginFolder+"/settings.json"))) {
+                // If the settings file doesn't exist but the folder exists, we just recreate it here.
+                try {
+                    Files.createDirectories(Paths.get(pluginFolder));
+                } catch (IOException ex) {
+                    System.out.println (ex.toString());
+                }
+            }
+        } else {
+            // If the folder is missing, assume the worst and that everything is missing. Make the folder and settings file.
+            try {
+                Files.createDirectories(Paths.get(pluginFolder));
+                Files.write(Paths.get(pluginFolder + "/settings.json"), "{}".getBytes());
+            } catch (IOException ex) {
+                System.out.println (ex.toString());
+            }
+        }
     }
 }
