@@ -30,7 +30,7 @@ public final class Basics extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         pluginFolderVert(pluginFolder);
-        plguinSettingsLoad(pluginSettings);
+        pluginSettingsLoad(pluginSettings);
         getLogger().info("Loaded version " + currentVersion);
     }
 
@@ -99,14 +99,14 @@ public final class Basics extends JavaPlugin {
             sender.sendMessage("For commands do /help Basics");
             return true;
         } else if (cmd.getName().equalsIgnoreCase("reload")) {
-            plguinSettingsLoad(pluginSettings);
+            pluginSettingsLoad(pluginSettings);
             sender.sendMessage("[Basics] Settings loaded from file!");
             return true;
         }
         return true;
     }
 
-    public void plguinSettingsLoad(JSONObject obj) {
+    public void pluginSettingsLoad(JSONObject obj) {
         // Load plugin settings.
         JSONParser parser = new JSONParser();
         try {

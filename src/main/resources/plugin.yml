@@ -16,7 +16,7 @@ commands:
   setspawn:
     description: Sets the spawn location.
     usage: /<command>
-    permission: basics.setspawn
+    permission: basics.admin.setspawn
     permission-message: You don't have the required permissions to use this command.
   ping:
     description: Ping!
@@ -46,5 +46,29 @@ permissions:
       basics.tickrate: true
       basics.ping: true
       basics.setspawn: true
-      basics.spawn: true
+      basics.admin.setspawn: true
       basics.admin.reload: true
+  basics.admin.*:
+    description: Give access to all admin Basics commands.
+    children:
+      basics.admin.setspawn: true
+      basics.admin.reload: true
+  basics.basics:
+    description: View plguin info.
+    default: true
+  basics.ping:
+    description: Pings server.
+    default: true
+  basics.spawn:
+    description: Teleports player to spawn.
+    default: true
+  basics.tickrate:
+    description: Shows the server's tickrate.
+    default: true
+  basics.admin.reload:
+    description: Reload settings for Basics.
+    default: op
+  basics.admin.setspawn:
+    description: Sets the spawn location.
+    default: op
+
