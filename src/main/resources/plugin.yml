@@ -38,6 +38,11 @@ commands:
     usage: /<command>
     permission: basics.admin.reload
     permission-message: You don't have the required permissions to use this command.
+  clearlag:
+    description: Clears all ground items in loaded chunks.
+    usage: /<command>
+    permission: basics.admin.clearlag
+    permission-message: You don't have the required permissions to use this command.
 permissions:
   basics.*:
     description: Give access to all Basics commands.
@@ -53,6 +58,7 @@ permissions:
     children:
       basics.admin.setspawn: true
       basics.admin.reload: true
+      basics.admin.clearlag: true
   basics.basics:
     description: View plguin info.
     default: true
@@ -70,5 +76,8 @@ permissions:
     default: op
   basics.admin.setspawn:
     description: Sets the spawn location.
+    default: op
+  basics.admin.clearlag:
+    description: Clears all ground items in loaded chunks.
     default: op
 

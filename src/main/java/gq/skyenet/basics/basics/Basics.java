@@ -18,6 +18,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.List;
 
 public final class Basics extends JavaPlugin {
 
@@ -62,8 +63,10 @@ public final class Basics extends JavaPlugin {
                 Location spawnLocation = new Location(getServer().getWorld(worldString), x, y, z, yaw, pitch);
                 player.teleport(spawnLocation);
                 return true;
+            } else {
+                sender.sendMessage("[Basics] You must be a player to run this command!");
+                return true;
             }
-            return true;
         } else if (cmd.getName().equalsIgnoreCase("setspawn")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
@@ -83,8 +86,10 @@ public final class Basics extends JavaPlugin {
                 pluginSettingsSave(pluginSettings);
                 sender.sendMessage("[Basics] Spawn set!");
                 return true;
+            } else {
+                sender.sendMessage("[Basics] You must be a player to run this command!");
+                return true;
             }
-            return true;
         } else if (cmd.getName().equalsIgnoreCase("ping")) {
             sender.sendMessage("Pong!");
             return true;
@@ -98,10 +103,26 @@ public final class Basics extends JavaPlugin {
             sender.sendMessage("This server is currently running Basics version " + currentVersion);
             sender.sendMessage("For commands do /help Basics");
             return true;
-        } else if (cmd.getName().equalsIgnoreCase("reload")) {
+        } else if (cmd.getName().equalsIgnoreCase("basicsreload")) {
             pluginSettingsLoad(pluginSettings);
             sender.sendMessage("[Basics] Settings loaded from file!");
             return true;
+        } else if (cmd.getName().equalsIgnoreCase("clearlag")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                World world = player.getWorld();
+                List<Entity> entList = ((World) world).getEntities();
+                for (Entity current : entList) {
+                    if (current instanceof Item) {
+                        current.remove();
+                    }
+                }
+                sender.sendMessage("[Basics] Cleared all items.");
+                return true;
+            } else {
+                sender.sendMessage("[Basics] You must be a player to run this command!");
+                return true;
+            }
         }
         return true;
     }
