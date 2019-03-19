@@ -39,7 +39,7 @@ commands:
     permission: basics.admin.reload
     permission-message: You don't have the required permissions to use this command.
   clearlag:
-    description: Clears all ground items in loaded chunks.
+    description: Clears all ground items in loaded chunks of the current world.
     usage: /<command>
     permission: basics.admin.clearlag
     permission-message: You don't have the required permissions to use this command.
@@ -78,6 +78,6 @@ permissions:
     description: Sets the spawn location.
     default: op
   basics.admin.clearlag:
-    description: Clears all ground items in loaded chunks.
+    description: Clears all ground items in loaded chunks of the current world.
     default: op
 
